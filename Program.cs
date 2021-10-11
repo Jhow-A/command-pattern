@@ -1,12 +1,18 @@
-﻿using System;
-
-namespace CommandPattern
+﻿namespace CommandPattern
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Chef chef = new();
+
+            var pedido = new Pedido(chef, OpcaoPedido.Prato);
+            var garcom = new Garcom(pedido);
+            garcom.Executar();
+
+            pedido = new Pedido(chef, OpcaoPedido.Sobremesa);
+            garcom = new Garcom(pedido);
+            garcom.Executar();
         }
     }
 }
